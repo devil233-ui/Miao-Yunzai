@@ -7,7 +7,7 @@ import YAML from "yaml"
 import common from "../../../lib/common/common.js"
 import fetch from "node-fetch"
 
-gsCfg.cpCfg("mys", "pushNews")
+gsCfg。cpCfg("mys", "pushNews")
 export class mysNews extends plugin {
   constructor(e) {
     super({
@@ -174,6 +174,10 @@ export class mysNews extends plugin {
     if (this.e.msg.includes("资讯")) {
       type = `${game}infoGroup`
       typeName = "资讯"
+    }
+    if (this.e.msg.includes("活动")) {
+      type = `${game}activityGroup`
+      typeName = "活动"
     }
 
     let model
