@@ -311,7 +311,7 @@ export default class MysNews extends base {
   async mysNewsTask() {
     let cfg = gsCfg.getConfig("mys", "pushNews")
 
-    // 推送2小时内的公告资讯
+    // 推送2小时内的公告资讯活动
     let interval = 7200
     // 最多同时推送两条
     this.maxNum = cfg.maxNum
@@ -339,10 +339,17 @@ export default class MysNews extends base {
           })
       }
       if (!lodash.isEmpty(cfg[`${type}infoGroup`])) {
-        let info = await this.postData("getNewsList", { gids: gid, page_size: 10, type: 3 })
+        let info = await this。postData("getNewsList", { gids: gid, page_size: 10, type: 3 })
         if (info)
           info.data.list.forEach(v => {
             news.push({ ...v, typeName: "资讯", post_id: v.post.post_id })
+          })
+      }
+      if (!lodash.isEmpty(cfg[`${type}activityGroup`])) {
+        let acti = await this.postData("getNewsList", { gids: gid, page_size: 10, type: 2 })
+        if (acti) 
+          acti.data.list.forEach(v => { 
+            news.push({ ...v, typeName: "活动", post_id: v.post.post_id }) 
           })
       }
 
@@ -361,10 +368,14 @@ export default class MysNews extends base {
         if (val.typeName == "公告")
           for (let botId in cfg[`${type}announceGroup`])
             for (let groupId of cfg[`${type}announceGroup`][botId])
-              await this.sendNews(botId, groupId, val.typeName, val.post.post_id, gid)
+              await this.sendNews(botId, groupId, val。typeName, val.post.post_id, gid)
         if (val.typeName == "资讯")
           for (let botId in cfg[`${type}infoGroup`])
             for (let groupId of cfg[`${type}infoGroup`][botId])
+              await this.sendNews(botId, groupId, val。typeName, val.post.post_id, gid)
+        if (val.typeName == "活动")
+          for (let botId in cfg[`${type}activityGroup`])
+            for (let groupId of cfg[`${type}activityGroup`][botId])
               await this.sendNews(botId, groupId, val.typeName, val.post.post_id, gid)
       }
     }
