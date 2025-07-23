@@ -19,17 +19,23 @@ gsannounceGroup: {}
 #原神资讯推送群
 gsinfoGroup: {}
 
+#原神米游社活动推送群
+gsactivitysGroup: {}
+
 #原神活动到期推送群
 gsActivityPush: {}
-
-#星铁活动到期推送群
-srActivityPush: {}
 
 #崩坏星穹铁道公告推送群
 srannounceGroup: {}
 
 #崩坏星穹铁道资讯推送群
 srinfoGroup: {}
+
+#星铁米游社活动推送群
+sractivitysGroup: {}
+
+#星铁活动到期推送群
+srActivityPush: {}
 
 #绝区零公告推送群
 zzzannounceGroup: {}
