@@ -339,7 +339,7 @@ export default class MysNews extends base {
           })
       }
       if (!lodash.isEmpty(cfg[`${type}infoGroup`])) {
-        let info = await this。postData("getNewsList", { gids: gid, page_size: 10, type: 3 })
+        let info = await this.postData("getNewsList", { gids: gid, page_size: 10, type: 3 })
         if (info)
           info.data.list.forEach(v => {
             news.push({ ...v, typeName: "资讯", post_id: v.post.post_id })
