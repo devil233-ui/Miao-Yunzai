@@ -7,7 +7,7 @@ import YAML from "yaml"
 import common from "../../../lib/common/common.js"
 import fetch from "node-fetch"
 
-gsCfg。cpCfg("mys", "pushNews")
+gsCfg.cpCfg("mys", "pushNews")
 export class mysNews extends plugin {
   constructor(e) {
     super({
